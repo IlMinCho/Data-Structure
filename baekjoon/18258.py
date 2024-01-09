@@ -44,9 +44,36 @@ class Queue:
     def back(self):
         return self.queue[-1] if self.queue else -1
 
-def process_commands(commands):
+
+# def process_commands(commands):
+#     q = Queue()
+#     for command in commands:
+#         if command.startswith("push"):
+#             _, x = command.split()
+#             q.push(int(x))
+#         elif command == "pop":
+#             print(q.pop())
+#         elif command == "size":
+#             print(q.size())
+#         elif command == "empty":
+#             print(q.empty())
+#         elif command == "front":
+#             print(q.front())
+#         elif command == "back":
+#             print(q.back())
+
+# def main():
+#     input_lines = sys.stdin.readlines()
+#     commands = [line.strip() for line in input_lines[1:]] 
+#     process_commands(commands)
+
+
+def main():
     q = Queue()
-    for command in commands:
+    n = int(sys.stdin.readline().strip())  # 첫 번째 줄에서 명령의 수를 읽습니다.
+    
+    for _ in range(n):
+        command = sys.stdin.readline().strip()
         if command.startswith("push"):
             _, x = command.split()
             q.push(int(x))
@@ -61,12 +88,8 @@ def process_commands(commands):
         elif command == "back":
             print(q.back())
 
-def main():
-    input_lines = sys.stdin.readlines()
-    commands = [line.strip() for line in input_lines[1:]] 
-    process_commands(commands)
-
 if __name__ == "__main__":
     main()
+
 
 
