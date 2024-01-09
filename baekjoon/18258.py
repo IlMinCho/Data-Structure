@@ -70,7 +70,7 @@ class Queue:
 
 def main():
     q = Queue()
-    n = int(sys.stdin.readline().strip())  # 첫 번째 줄에서 명령의 수를 읽습니다.
+    n = int(sys.stdin.readline().strip())
     
     for _ in range(n):
         command = sys.stdin.readline().strip()
