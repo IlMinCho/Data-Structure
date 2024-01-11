@@ -22,7 +22,11 @@ def input():
     return sys.stdin.readline().rstrip()
 
 def last_card(n):
-    cards = deque(range(1, n + 1))
+    # cards = deque(range(1, n + 1))
+    cards = deque()
+
+    for i in range(1, n + 1):
+        cards.append(i)
 
     while len(cards) > 1:
         cards.popleft()  
