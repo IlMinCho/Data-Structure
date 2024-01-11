@@ -14,19 +14,34 @@
 # 출력
 # 예제와 같이 요세푸스 순열을 출력한다.
 
+from collections import deque
+
 def josephus_sequence(n, k):
-    people = list(range(1, n + 1))
+    people = deque(range(1, n + 1))
     result = []
-    index = 0
 
     while people:
-        index = (index + k - 1) % len(people)
-        result.append(people.pop(index))
+        # k-1번 만큼 오른쪽으로 이동
+        people.rotate(-k + 1)
+        # 이제 맨 왼쪽의 요소가 k번째 요소가 됨
+        result.append(people.popleft())
 
     return result
+
+# def josephus_sequence(n, k):
+#     people = list(range(1, n + 1))
+#     result = []
+#     index = 0
+
+#     while people:
+#         index = (index + k - 1) % len(people)
+#         result.append(people.pop(index))
+
+#     return result
 
 n, k = map(int, input().split())
 
 josephus_result = josephus_sequence(n, k)
 
 print("<" + ", ".join(map(str, josephus_result)) + ">")
+
