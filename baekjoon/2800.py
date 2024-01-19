@@ -19,34 +19,32 @@
 
 # 출력
 # 올바른 괄호 쌍을 제거해서 나올 수 있는 서로 다른 식을 사전 순으로 출력한다.
-
 from itertools import combinations
 
-def generate_expressions(expression):
-    # 괄호 쌍의 위치를 찾는다.
-    brackets = []
-    stack = []
+def find_bracket_pairs(expression):
+    stack, pairs = [], []
     for i, char in enumerate(expression):
-        if char == '(' or char == '[':
+        if char == '(':
             stack.append(i)
-        elif char == ')' or char == ']':
-            if stack:
-                start = stack.pop()
-                brackets.append((start, i))
+        elif char == ')':
+            start = stack.pop()
+            pairs.append((start, i))
+    return pairs
 
+def generate_expressions(expression, pairs):
     expressions = set()
-    for r in range(1, len(brackets) + 1):
-        for combo in combinations(brackets, r):
-            expr = list(expression)
+    for r in range(1, len(pairs) + 1):  # 최소 하나의 괄호 쌍 제거
+        for combo in combinations(pairs, r):
+            temp_expr = list(expression)
             for start, end in combo:
-                expr[start] = expr[end] = ''
-            expressions.add(''.join(expr).replace(' ', ''))
-
+                temp_expr[start] = temp_expr[end] = ''
+            expressions.add(''.join(temp_expr).replace(' ', ''))
     return sorted(expressions)
 
 def main():
     expression = input()
-    expressions = generate_expressions(expression)
+    pairs = find_bracket_pairs(expression)
+    expressions = generate_expressions(expression, pairs)
     for expr in expressions:
         print(expr)
 
