@@ -21,29 +21,49 @@
 import sys
 
 def process_strings():
-    # 집합 S를 생성하고 초기화합니다.
-    S = set()
-
     # 문자열의 개수 N과 M을 입력 받습니다.
     N, M = map(int, sys.stdin.readline().split())
 
     # 집합 S에 포함되어 있는 문자열들을 입력 받아서 집합에 저장합니다.
-    for _ in range(N):
-        string = sys.stdin.readline().strip()
-        S.add(string)
+    S = {sys.stdin.readline().strip() for _ in range(N)}
 
     # 검사해야 하는 문자열들을 입력 받아서 집합 S에 포함되어 있는지 확인하고 개수를 세줍니다.
-    count = 0
-    for _ in range(M):
-        string_to_check = sys.stdin.readline().strip()
-        if string_to_check in S:
-            count += 1
+    count = sum(sys.stdin.readline().strip() in S for _ in range(M))
 
     # 결과를 출력합니다.
     print(count)
 
 if __name__ == "__main__":
     process_strings()
+
+
+
+# import sys
+
+# def process_strings():
+#     # 집합 S를 생성하고 초기화합니다.
+#     S = set()
+
+#     # 문자열의 개수 N과 M을 입력 받습니다.
+#     N, M = map(int, sys.stdin.readline().split())
+
+#     # 집합 S에 포함되어 있는 문자열들을 입력 받아서 집합에 저장합니다.
+#     for _ in range(N):
+#         string = sys.stdin.readline().strip()
+#         S.add(string)
+
+#     # 검사해야 하는 문자열들을 입력 받아서 집합 S에 포함되어 있는지 확인하고 개수를 세줍니다.
+#     count = 0
+#     for _ in range(M):
+#         string_to_check = sys.stdin.readline().strip()
+#         if string_to_check in S:
+#             count += 1
+
+#     # 결과를 출력합니다.
+#     print(count)
+
+# if __name__ == "__main__":
+#     process_strings()
 
 
 # def count_strings_in_set(N, M, set_strings, check_strings):
