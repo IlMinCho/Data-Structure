@@ -18,22 +18,24 @@
 # 출력
 # 첫째 줄에 M개의 문자열 중에 총 몇 개가 집합 S에 포함되어 있는지 출력한다.
 
+import sys
+
 def process_strings():
     # 집합 S를 생성하고 초기화합니다.
     S = set()
 
     # 문자열의 개수 N과 M을 입력 받습니다.
-    N, M = map(int, input().split())
+    N, M = map(int, sys.stdin.readline().split())
 
     # 집합 S에 포함되어 있는 문자열들을 입력 받아서 집합에 저장합니다.
     for _ in range(N):
-        string = input().strip()
+        string = sys.stdin.readline().strip()
         S.add(string)
 
     # 검사해야 하는 문자열들을 입력 받아서 집합 S에 포함되어 있는지 확인하고 개수를 세줍니다.
     count = 0
     for _ in range(M):
-        string_to_check = input().strip()
+        string_to_check = sys.stdin.readline().strip()
         if string_to_check in S:
             count += 1
 
