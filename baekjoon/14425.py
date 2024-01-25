@@ -42,3 +42,33 @@ def process_strings():
 
 if __name__ == "__main__":
     process_strings()
+
+
+# def count_strings_in_set(N, M, set_strings, check_strings):
+#     # 집합 S에 문자열 저장
+#     S = set(set_strings)
+
+#     # S에 포함된 문자열 수 세기
+#     count = 0
+#     for string in check_strings:
+#         if string in S:
+#             count += 1
+
+#     return count
+
+# def main():
+#     # N과 M 입력받기
+#     N, M = map(int, input().split())
+
+#     # 집합 S에 포함될 문자열들 입력받기
+#     set_strings = [input() for i in range(N)]
+
+#     # 검사할 문자열들 입력받기
+#     check_strings = [input() for i in range(M)]
+
+#     # 결과 출력
+#     result = count_strings_in_set(N, M, set_strings, check_strings)
+#     print(f"{result}")
+
+# if __name__ == "__main__":
+#     main()
