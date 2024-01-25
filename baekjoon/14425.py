@@ -72,3 +72,24 @@ if __name__ == "__main__":
 
 # if __name__ == "__main__":
 #     main()
+    
+# def main():
+#     # N과 M 입력받기
+#     N, M = map(int, input().split())
+
+#     # 집합 S에 포함될 문자열들 입력받기
+#     S = set()
+#     for _ in range(N):
+#         S.add(input())
+
+#     # 검사할 문자열들 입력받고, 집합 S에 포함된 문자열 수 세기
+#     count = 0
+#     for _ in range(M):
+#         if input() in S:
+#             count += 1
+
+#     # 결과 출력
+#     print(count)
+
+# if __name__ == "__main__":
+#     main()
