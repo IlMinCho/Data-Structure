@@ -13,34 +13,63 @@
 
 # 출력
 # 입력에서 0이 주어진 횟수만큼 답을 출력한다. 만약 배열이 비어 있는 경우인데 가장 큰 값을 출력하라고 한 경우에는 0을 출력하면 된다.
-import sys
+# import sys
 
-def max_heap(list):
+# def max_heap(list):
+#     heap = []
+#     result = []
+
+#     for x in list:
+#         if x == 0:
+#             if heap:
+#                 heap.sort(reverse=True)
+#                 result.append(heap.pop(0))
+#             else:
+#                 result.append(0)
+#         elif x > 0: 
+#             heap.append(x)
+    
+#     return result
+
+    
+# def main():
+#     N = int(sys.stdin.readline())
+#     numbers = [int(sys.stdin.readline()) for _ in range(N)]
+
+#     outcomes = max_heap(numbers)
+#     print('----')
+#     for p in outcomes:
+#         print(p)
+    
+
+# if __name__ == "__main__":
+#     main()
+
+import sys
+import heapq
+
+def max_heap(numbers):
     heap = []
     result = []
 
-    for x in list:
+    for x in numbers:
         if x == 0:
             if heap:
-                heap.sort(reverse=True)
-                result.append(heap.pop(0))
+                result.append(-heapq.heappop(heap))  # 최대 값을 추출하고 부호를 반전
             else:
                 result.append(0)
-        elif x > 0: 
-            heap.append(x)
-    
+        else:
+            heapq.heappush(heap, -x)  # 숫자의 부호를 반전시켜 힙에 삽입
+
     return result
 
-    
 def main():
     N = int(sys.stdin.readline())
     numbers = [int(sys.stdin.readline()) for _ in range(N)]
 
     outcomes = max_heap(numbers)
-    print('----')
     for p in outcomes:
         print(p)
     
-
 if __name__ == "__main__":
     main()
