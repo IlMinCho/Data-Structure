@@ -16,30 +16,55 @@
 
 # 출력
 # 첫째 줄에 N번째 큰 수를 출력한다.
-import sys, heapq
+# import sys, heapq
     
-def find_nth_largest(matrix, N):
-    n = len(matrix)
-    min_heap = [(-matrix[i][n-1], i, n-1) for i in range(n)]
-    heapq.heapify(min_heap)
+# def find_nth_largest(matrix, N):
+#     n = len(matrix)
+#     min_heap = [(-matrix[i][n-1], i, n-1) for i in range(n)]
+#     heapq.heapify(min_heap)
+
+#     for _ in range(N):
+#         value, row, col = heapq.heappop(min_heap)
+#         if col > 0:
+#             heapq.heappush(min_heap, (-matrix[row][col-1], row, col-1))
+
+#     return -value
+
+# def main():
+#     N = int(sys.stdin.readline())
+#     matrix = []
+
+#     for _ in range(N):
+#         row = list(map(int, sys.stdin.readline().split()))
+#         matrix.append(row)
+    
+#     answer = find_nth_largest(matrix, N)  
+#     print(answer)
+
+# if __name__== "__main__":
+#     main()
+
+import sys, heapq
+
+def find_nth_largest_heap(N):
+    heap = []
 
     for _ in range(N):
-        value, row, col = heapq.heappop(min_heap)
-        if col > 0:
-            heapq.heappush(min_heap, (-matrix[row][col-1], row, col-1))
+        numbers = map(int, sys.stdin.readline().split())
+        for number in numbers:
+            if len(heap) < N:
+                heapq.heappush(heap, number)
+            else:
+                if heap[0] < number:
+                    heapq.heappop(heap)
+                    heapq.heappush(heap, number)
 
-    return -value
+    return heap[0]
 
 def main():
-    N = int(sys.stdin.readline())
-    matrix = []
-
-    for _ in range(N):
-        row = list(map(int, sys.stdin.readline().split()))
-        matrix.append(row)
-    
-    answer = find_nth_largest(matrix, N)  
+    N = int(sys.stdin.readline().strip())
+    answer = find_nth_largest_heap(N)
     print(answer)
 
-if __name__== "__main__":
+if __name__ == "__main__":
     main()
