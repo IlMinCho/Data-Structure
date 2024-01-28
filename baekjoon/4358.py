@@ -9,7 +9,7 @@
 
 # 출력
 # 주어진 각 종의 이름을 사전순으로 출력하고, 그 종이 차지하는 비율을 백분율로 소수점 4째자리까지 반올림해 함께 출력한다.
-
+import sys
 from collections import Counter
 
 def calculate_tree_distribution(trees):
@@ -24,24 +24,30 @@ def calculate_tree_distribution(trees):
     sorted_distribution = sorted(distribution.items())
 
     # Format output
-    formatted_output = [f"{tree} {percentage:.4f}" for tree, percentage in sorted_distribution]
+    # formatted_output = [f"{tree} {percentage:.4f}" for tree, percentage in sorted_distribution]
 
-    return formatted_output
+    return sorted_distribution
 
 def main():
-    trees = []
-    try:
-        while True:
-            tree = input().strip()
-            if tree:
-                trees.append(tree)
-            else:
-                break
-    except EOFError:
-        pass
+    # trees = []
+    # try:
+    #     while True:
+    #         tree = input().strip()
+    #         if tree:
+    #             trees.append(tree)
+    #         else:
+    #             break
+    # except EOFError:
+    #     pass
 
-    for tree, percentage in calculate_tree_distribution(trees):
-        print(f"{tree} {percentage:.4f}")
+    # for tree, percentage in calculate_tree_distribution(trees):
+    #     print(f"{tree} {percentage:.4f}")
+
+    trees = sys.stdin.read().strip().split('\n')
+
+    results = [f"{tree} {percentage:.4f}" for tree, percentage in calculate_tree_distribution(trees)]
+    print('\n'.join(results))
 
 if __name__ == "__main__":
     main()
+
