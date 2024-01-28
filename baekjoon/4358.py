@@ -48,6 +48,15 @@ def main():
     results = [f"{tree} {percentage:.4f}" for tree, percentage in calculate_tree_distribution(trees)]
     print('\n'.join(results))
 
+# # simple way
+# def main():
+#     trees = Counter(sys.stdin.read().strip().split('\n'))
+#     total_trees = sum(trees.values())
+
+#     for tree in sorted(trees):
+#         percentage = (trees[tree] / total_trees) * 100
+#         print(f"{tree} {percentage:.4f}")
+
 if __name__ == "__main__":
     main()
 
